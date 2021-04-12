@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import UserInput from './User/UserInput';
+import UserOutput from './User/UserOutput'
 import './App.css';
 
-function App() {
+const User = () => {
+  const [statoCorrente, gestioneStato] = useState({
+    username: "p_babacar",
+  });
+
+  const cambiaUsername = () => {
+    gestioneStato({
+      username: "mr_brassss",
+    })
+  };
+
+  const inserisciUsername = (event) => {
+    gestioneStato({
+      username: event.target.value,
+    })
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="contenitore">
+      <UserOutput username={statoCorrente.username}>Oggi sono andato a lavoro</UserOutput>
+      <UserOutput>Oggi sono andato a scuola</UserOutput>
+      <UserOutput>Oggi non ho fatto niente</UserOutput>
+      <UserInput username={statoCorrente.username} chiamaMetodo={inserisciUsername}></UserInput>
+      <button className="cambiaUsername" onClick={cambiaUsername}>Cambia username</button>
     </div>
   );
-}
+};
 
-export default App;
+export default User;
