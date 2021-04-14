@@ -4,29 +4,29 @@ import UserOutput from './User/UserOutput'
 import './App.css';
 
 const User = () => {
-  const [statoCorrente, gestioneStato] = useState({
+  const [getStatoCorrente, setStatoCorrente] = useState({
     username: "p_babacar",
   });
 
-  const cambiaUsername = () => {
-    gestioneStato({
+  const changeUsername = () => {
+    setStatoCorrente({
       username: "mr_brassss",
     })
   };
 
-  const inserisciUsername = (event) => {
-    gestioneStato({
+  const insertUsername = (event) => {
+    setStatoCorrente({
       username: event.target.value,
     })
   };
 
   return (
     <div className="contenitore">
-      <UserOutput username={statoCorrente.username}>Oggi sono andato a lavoro</UserOutput>
+      <UserOutput username={getStatoCorrente.username}>Oggi sono andato a lavoro</UserOutput>
       <UserOutput>Oggi sono andato a scuola</UserOutput>
       <UserOutput>Oggi non ho fatto niente</UserOutput>
-      <UserInput username={statoCorrente.username} chiamaMetodo={inserisciUsername}></UserInput>
-      <button className="cambiaUsername" onClick={cambiaUsername}>Cambia username</button>
+      <UserInput username={getStatoCorrente.username} chiamaMetodo={insertUsername}></UserInput>
+      <button className="changeUsername" onClick={changeUsername}>Cambia username</button>
     </div>
   );
 };
